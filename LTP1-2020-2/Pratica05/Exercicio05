@@ -1,0 +1,58 @@
+#Exercicio 5 - Aula 5
+#Calculadora 4 operações basicas mais cosseno, seno e tangente
+
+operacao = input('Informe a operação desejada:')
+
+if operacao == '+':
+  valor1 = float(input('valor 1:'))
+  valor2 = float(input('valor 2:'))
+  resultado = valor1 + valor2
+  print(resultado)
+
+elif operacao == '-':
+  valor1 = float(input('valor 1:'))
+  valor2 = float(input('valor 2:'))
+  resultado = valor1 - valor2
+  print(resultado)
+
+elif operacao == '*':
+  valor1 = float(input('valor 1:'))
+  valor2 = float(input('valor 2:'))
+  resultado = valor1 * valor2
+  print(resultado)
+
+elif operacao == '/':
+  valor1 = float(input('valor 1:'))
+  valor2 = float(input('valor 2:'))
+  if valor2 == 0:
+    print('Não é possivel dividir por 0')
+  else:
+   resultado = valor1 / valor2
+   print(resultado)
+
+elif operacao == 'cosseno':
+  #importar modulo matematico
+  import math
+  valorangulo = float(input('valor do angulo: '))
+  valorradiano = math.radians(valorangulo)
+  resultado = math.cos(valorradiano)
+  print(resultado)
+
+elif operacao == 'seno':
+  #importar modulo matematico
+  import math
+  valorangulo = float(input('valor do angulo: '))
+  valorradiano = math.radians(valorangulo)
+  resultado = math.sin(valorradiano)
+  print(resultado)
+
+elif operacao == 'tangente':
+  #importar modulo matematico
+  import math
+  valorangulo = float(input('valor do angulo: '))
+  valorradiano = math.radians(valorangulo)
+  resultado = math.tan(valorradiano)
+  print(resultado)
+
+else:
+  print('operação invalida')
