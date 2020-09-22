@@ -1,0 +1,34 @@
+#Exercicio 4 - Aula 5
+#Calculadora 4 operações basicas
+
+operacao = input('Informe a operação desejada:')
+
+if operacao == '+':
+  valor1 = float(input('valor 1:'))
+  valor2 = float(input('valor 2:'))
+  resultado = valor1 + valor2
+  print(resultado)
+
+elif operacao == '-':
+  valor1 = float(input('valor 1:'))
+  valor2 = float(input('valor 2:'))
+  resultado = valor1 - valor2
+  print(resultado)
+
+elif operacao == '*':
+  valor1 = float(input('valor 1:'))
+  valor2 = float(input('valor 2:'))
+  resultado = valor1 * valor2
+  print(resultado)
+
+elif operacao == '/':
+  valor1 = float(input('valor 1:'))
+  valor2 = float(input('valor 2:'))
+  if valor2 == 0:
+    print('Não é possivel dividir por 0')
+  else:
+   resultado = valor1 / valor2
+   print(resultado)
+
+else:
+  print('operação invalida')
