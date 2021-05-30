@@ -1,0 +1,38 @@
+import cherrypy
+
+class ProjetoJokenpo(object):
+    @cherrypy.expose
+    def index(self):
+        return """<html>
+        <head></head>
+        <body>
+            <h1>Jokenpo Expert<h1>
+            <br>
+            <a href="https://www.youtube.com/watch?v=OtzekNVWs30">Video explicativo sobre o Jokenpo Avançado</a>
+            <br>
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/OtzekNVWs30" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <br>
+            <form method="get" action="resultado"
+                <p>Escolha uma jogada - Pedra, Papel, Tesoura, Largarto ou Spock</p>
+                <input type="text" value="nome"/>
+                <button type="subimit" value="pedra" name="result">Pedra</button>
+                <button type="subimit" value="Papel" name="result1">Papel</button>
+                <button type="subimit" value="Tesoura" name="result2">Tesoura</button>
+                <button type="subimit" value="Largato" name="result3">Largato</button>
+                <button type="subimit" value="Spock" name="result4">Spock</button>
+            </form>
+        </body>
+     </html>"""
+
+    @cherrypy.expose
+    def resultado(self,result, result1, result2, result3, result4):
+        return f"""<html>
+        <head></head>
+        <body>
+            <p> a sua resposta foi {result}
+            <a href="http://localhost:8080">Voltar</a>
+        </body>
+    </html>"""
+
+if __name__ == '__main__':
+    cherrypy.quickstart(ProjetoJokenpo())
