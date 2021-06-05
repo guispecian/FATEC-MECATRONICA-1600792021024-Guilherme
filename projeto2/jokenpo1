@@ -1,0 +1,100 @@
+import cherrypy
+import random
+
+class ProjetoJokenpo(object):
+    @cherrypy.expose
+    def index(self):
+        return """<html>
+        <head></head>
+        <body>
+            <h1>Jokenpo Expert<h1>
+            <br>
+            <a href="https://www.youtube.com/watch?v=OtzekNVWs30">Video explicativo sobre o Jokenpo Avançado</a>
+            <br>
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/OtzekNVWs30" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <br>
+            <form method="get" action="resultado"
+                <p>Escreva sua jogada - Pedra, Papel, Tesoura, Largarto ou Spock</p>
+                <input type="text" value="Informe o numero da sua jogada:" name="jogada"/>
+                <button type="submit">Enviar jogada</button>
+            </form>
+        </body>
+     </html>"""
+
+    @cherrypy.expose
+    def resultado(self, jogada):
+        jogada = jogada.upper()
+        #Define a jogada do jogador
+        if jogada == "PEDRA":
+            escolha = 0
+        elif jogada == "PAPEL":
+            escolha = 1
+        elif jogada == "TESOURA":
+            escolha = 2
+        elif jogada == "LARGARTO":
+            escolha = 3
+        elif jogada == "SPOCK":
+            escolha = 4
+
+        #Define jogada do Computador
+        computador_joga = random.randint(0,4)
+        # Define jogada do Computador versão textp
+        if computador_joga == 0 :
+            computador_escolha = "PEDRA"
+        elif computador_joga == 1 :
+            computador_escolha = "PAPEL"
+        elif computador_joga == 2 :
+            computador_escolha = "TESOURA"
+        elif computador_joga == 3 :
+            computador_escolha = "LARGARTO"
+        elif computador_joga == 4 :
+            computador_escolha = "SPOCK"
+
+        #Acontece o jogo
+        if escolha == computador_joga:
+            resultado = "EMPATE!"
+
+        elif escolha == 0:  # PEDRA
+            if (computador_joga == 1) or (computador_joga == 4):
+                resultado = "DERROTA"
+            elif (computador_joga == 2) or (computador_joga == 3):
+                resultado = "VITORIA"
+
+        elif escolha == 1:  # PAPEL
+            if (computador_joga == 2) or (computador_joga == 3):
+                resultado = "DERROTA"
+            elif (computador_joga == 0) or (computador_joga == 4):
+                resultado = "VITORIA"
+
+        elif escolha == 2:  # TESOURA
+            if (computador_joga == 0) or (computador_joga == 4):
+                resultado = "DERROTA"
+            elif (computador_joga == 1) or (computador_joga == 3):
+                resultado = "VITORIA"
+
+        elif escolha == 3:  # LAGARTO
+            if (computador_joga == 0) or (computador_joga == 2):
+                resultado = "DERROTA"
+            elif (computador_joga == 1) or (computador_joga == 4):
+                resultado = "VITORIA"
+
+        elif escolha == 4:  # SPOCK
+            if (computador_joga == 1) or (computador_joga == 3):
+                resultado = "DERROTA"
+            elif (computador_joga == 0) or (computador_joga == 2):
+                resultado = "VITORIA"
+
+
+
+        return f"""<html>
+        <head></head>
+        <body>
+            <p> {resultado} </p>
+            <p> a sua escolha foi {jogada} e a do computador foi {computador_escolha}</p>
+            <br>
+            <a href="http://localhost:8080">Voltar</a>
+        </body>
+    </html>"""
+
+if __name__ == '__main__':
+    cherrypy.quickstart(ProjetoJokenpo())
