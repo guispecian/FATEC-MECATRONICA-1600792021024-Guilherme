@@ -1,28 +1,28 @@
 import cv2
 import numpy as np
 
-imagem = cv2.imread("Imagem.png")
+imagem = cv2.imread("pentagono3.png")
 altura, largura, bypixel = np.shape(imagem)
 
 print ("altura: ", altura)
 print ("largura: ", largura)
 
 imagem_copia = np.copy(imagem)
-#rgb do fundo: (63,72,204)
+
 
 for py in range(0,altura):
-for px in range(0,largura):
+        for px in range(0,largura):
   
-if (63,72,204) in imagem[py][px]:
-  imagem_copia[py][px][0] =0
-  imagem_copia[py][px][1] =0
-  imagem_copia[py][px][2] =0
-else:
-  imagem_copia[py][px][0] =255
-  imagem_copia[py][px][1] =255
-  imagem_copia[py][px][2] =255
+            if (255,255,255) in imagem[py][px]:
+                imagem_copia[py][px][0] =0
+                imagem_copia[py][px][1] =0
+                imagem_copia[py][px][2] =0
+            else:
+                imagem_copia[py][px][0] =255
+                imagem_copia[py][px][1] =255
+                imagem_copia[py][px][2] =255
   
-cv2_imshow(imagem_copia)
+cv2.imshow("imagem copiada", imagem_copia)
 
 x0 = largura
 y0 = altura
